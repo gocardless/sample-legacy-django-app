@@ -1,0 +1,33 @@
+{% block content %}
+<h1>GoCardless sample application</h1>
+
+<p>
+Click "Make purchase" to go through the flow of making a simple
+one-off purchase.
+  <form action ="{% url gc_buy %}" method='POST'>
+    {% csrf_token %}
+    <input type="hidden" name="name" value="One-off purchase">
+    <input type="submit" value="Make purchase">
+  </form>
+</p>
+
+<p>
+Click "Subscribe" to go through the flow of signing up for
+subscription.
+  <form action ="{% url gc_subscribe %}" method='POST'>
+    {% csrf_token %}
+    <input type="hidden" name="name" value="Sample subscription">
+    <input type="submit" value="Subscribe">
+  </form>
+</p>
+
+<p>
+Click "Preauthorize" to go through the flow of preauthorizing
+a variable direct-debit payment.
+  <form action ="{% url gc_preauth %}" method='POST'>
+    {% csrf_token %}
+    <input type="hidden" name="name" value="Sample preauthorization">
+    <input type="submit" value="Preauthorize">
+  </form>
+</p>
+{% endblock content %}
