@@ -79,8 +79,8 @@ For further information, refer to the [docs](https://sandbox.gocardless.com/docs
 
 Set up `localtunnel` to test out Webhooks. The `localtunnel` package should be
 installed as a dependency to the project.
-Note, however, that the port number is the same as the port that `rails server` is
-running on.
+Note, however, that the port number is the same as the port that `python manage.py runserver` is
+running on, which is 8000.
 ```sh
 (env)$ localtunnel-beta 8000
 => Port 8000 is now publicly accessible from http://5bebd69e5222.v2.localtunnel.com ...
