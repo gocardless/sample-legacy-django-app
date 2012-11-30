@@ -18,33 +18,40 @@ gocardless.set_details(
 )
 gocardless.environment = 'sandbox'
 
+
 # Generate a URL for a one-off payment and redirect to it
 class Purchase(RedirectView):
     def get_redirect_url(self, **kwargs):
-        url = gocardless.client.new_bill_url(10,
+        url = gocardless.client.new_bill_url(
+            10,
             name=self.request.POST.get('name')
         )
         return url
 
+
 # Generate a URL for a subscription and redirect to it
 class Subscribe(RedirectView):
     def get_redirect_url(self, **kwargs):
-        url = gocardless.client.new_subscription_url(10,
+        url = gocardless.client.new_subscription_url(
+            10,
             interval_unit='month',
             interval_length=1,
             name=self.request.POST.get('name')
         )
         return url
 
+
 # Generate a URL for a preauthorization and redirect to it
 class Preauth(RedirectView):
     def get_redirect_url(self, **kwargs):
-        url = gocardless.client.new_preauthorization_url(100,
+        url = gocardless.client.new_preauthorization_url(
+            100,
             interval_unit='month',
             interval_length=3,
             name=self.request.POST.get('name'),
         )
         return url
+
 
 # Handle the callback after the user finishes the payment process.
 # Render a success/error page depending on whether the transaction
@@ -52,6 +59,7 @@ class Preauth(RedirectView):
 # https://gocardless.com/docs/python/merchant_client_guide#completing-the-payment
 class Confirm(RedirectView):
     query_string = True
+
     def get_redirect_url(self, **kwargs):
         try:
             gocardless.client.confirm_resource(self.request.GET)
@@ -61,9 +69,11 @@ class Confirm(RedirectView):
 
         return super(Confirm, self).get_redirect_url(**kwargs)
 
+
 # Simple success and error views
 class Success(TemplateView):
     template_name = 'success.html'
+
 
 class Error(TemplateView):
     template_name = 'error.html'
@@ -95,4 +105,3 @@ class Webhook(View):
             pass
 
         return HttpResponse()
-
