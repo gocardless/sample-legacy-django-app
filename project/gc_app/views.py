@@ -11,10 +11,10 @@ __all__ = ('Purchase', 'Subscribe', 'Preauth',
            'Confirm', 'Success', 'Error', 'Webhook')
 
 gocardless.set_details(
-    app_id='PAZ05VVKQPNRQQPY4QYREJP0AQYFH3FAPVF49ADGKMAAJ6RZKQJG4XV6GDZ7C1Q3',
-    app_secret='NB3QEWW18AR9TKV6D3TE53T48PS2FZ4R25RBNSGAJS01H0Y0YP8YFGPJGKRPF551',
-    access_token='RDV3DW7W2EGN17FBVVKFNCD3JWPZDN9K7XHWBYM0X358C5DQ3ZEA2X8SQQQAR3YC',
-    merchant_id='07K9PZZM38'
+    app_id='',
+    app_secret='',
+    access_token='',
+    merchant_id=''
 )
 gocardless.environment = 'sandbox'
 
